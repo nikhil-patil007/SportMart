@@ -1,0 +1,179 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{% static 'images/sportmall.png' %}" type="image/png" />
+	<!--plugins-->
+	<link href="{% static 'plugins/OwlCarousel/css/owl.carousel.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/nouislider/nouislider.min.css' %}" rel="stylesheet" />
+	<!-- loader-->
+	<link href="{% static 'css/pace.min.css' %}" rel="stylesheet" />
+	<script src="{% static 'js/pace.min.js' %}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="{% static 'css/app.css' %}" rel="stylesheet">
+	<link href="{% static 'css/icons.css' %}" rel="stylesheet">
+	<title>SportMart | All Product</title>
+</head>
+
+<body class="bg-theme bg-theme9">	<b class="screen-overlay"></b>
+	<!--wrapper-->
+	<div class="wrapper">
+
+<!--start top header wrapper-->
+
+{% include 'app/S-head.html' %}
+<!--end top header wrapper-->
+
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--start breadcrumb-->
+				<section class="py-3 border-bottom d-none d-md-flex">
+					<div class="container">
+					</div>
+					
+				</section>
+				<!--end breadcrumb-->
+				
+				<!--start shop area-->
+				<section class="py-4">
+					<div class="container">
+						<div class="row">
+							
+							<div class="col-12 col-xl-12">
+								<div class="product-wrapper">
+									<div class="toolbox d-lg-flex align-items-center mb-3 gap-2 p-3 bg-dark-1">
+										<div class="d-flex flex-wrap flex-grow-1 gap-1">
+											<div class="d-flex align-items-center flex-nowrap">
+												<div><a href="{% url 'allProductpage' %}" class="btn btn-white rounded-0">All Products</a>
+												</div>
+												<div><a href="{% url 'addproductpage' %}" class="btn btn-light rounded-0">Add Products</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--start product show area-->
+									{% for i in data %} 
+									<div class="product-wrapper">
+										<div class="row">
+											<div class="col-12 col-xl-9">
+												<div class="product-grid">
+													<div class="card rounded-0 product-card">
+														<div class="row g-0">
+															<div class="col-md-4">
+																<img src="{{MEDIA_URL}}{{i.Product_Image.url}}" class="img-fluid"  style="margin-top: 30px; margin-bottom: 30px; margin-left: 50px; margin-right: 10px;" height="200" width="150">
+															</div>
+															<div class="col-md-8">
+																<div class="card-body">
+																	<div class="product-info">
+																		<a href="javascript:;">
+																			<p class="product-catergory font-13 mb-1">{{i.Product_Category}}</p>
+																		</a>
+																		<a href="javascript:;">
+																			<h6 class="product-name mb-2">{{i.Product_Name}}	</h6>
+																		</a>
+																		<p class="card-text">{{i.Product_Title}}</p>
+																		<div class="d-flex align-items-center">
+																			<div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">₹ {{i.Product_MRP}}</span>
+																				<span class="text-white fs-5">₹ {{i.Product_Price}}</span>
+																			</div>
+																			<div class="cursor-pointer ms-auto">
+																				<i class="bx bxs-star text-warning"></i>
+																				<i class="bx bxs-star text-warning"></i>
+																				<i class="bx bxs-star text-warning"></i>
+																				<i class="bx bxs-star text-warning"></i>
+																				<i class="bx bxs-star text-light-4"></i>
+																			</div>
+																		</div>
+																		<div class="product-action mt-2">
+																			<div class="d-flex gap-2">
+																				<a href="{% url 'showprod' pk=i.id %}" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>View Product</a>
+																				<a href="{% url 'deleteprod' pk=i.id %}" class="btn btn-light btn-ecomm"> <i class="bx bxs-trash"></i>Delete Product</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<hr>
+												</div>
+											</div>
+													
+										</div>
+										<!--end-->
+									</div>
+									{% endfor %}
+									<!--end product show area-->
+
+
+									<hr>
+									<nav class="d-flex justify-content-between" aria-label="Page navigation">
+										<ul class="pagination">
+											<li class="page-item"><a class="page-link" href="javascript:;"><i class='bx bx-chevron-left'></i> Prev</a>
+											</li>
+										</ul>
+										<ul class="pagination">
+											<li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span>
+											</li>
+											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">2</a>
+											</li>
+											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">3</a>
+											</li>
+											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">4</a>
+											</li>
+											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">5</a>
+											</li>
+										</ul>
+										<ul class="pagination">
+											<li class="page-item"><a class="page-link" href="javascript:;" aria-label="Next">Next <i class='bx bx-chevron-right'></i></a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+						<!--end row-->
+					</div>
+				</section>
+				<!--end shop area-->
+
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+<!--start footer section-->
+{% include 'app/S-foot.html' %}
+
+<!--end footer section-->
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+
+	<!--end wrapper-->
+	<!-- Bootstrap JS -->
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<!--plugins-->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
+	<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
+	<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+	<script src="{% static 'plugins/nouislider/nouislider.min.js' %}"></script>
+	<script src="{% static 'js/price-slider.js' %}"></script>
+	<script src="{% static 'js/product-gallery.js' %}"></script>
+	<!--app JS-->
+	<script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

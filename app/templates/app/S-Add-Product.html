@@ -1,0 +1,144 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{% static 'images/sportmall.png' %}" type="image/png" />
+	<!--plugins-->
+	<link href="{% static 'plugins/OwlCarousel/css/owl.carousel.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/nouislider/nouislider.min.css' %}" rel="stylesheet" />
+	<!-- loader-->
+	<link href="{% static 'css/pace.min.css' %}" rel="stylesheet" />
+	<script src="{% static 'js/pace.min.js' %}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="{% static 'css/app.css' %}" rel="stylesheet">
+	<link href="{% static 'css/icons.css' %}" rel="stylesheet">
+	<title>SportMart | Add Product</title>
+</head>
+
+<body class="bg-theme bg-theme9">	<b class="screen-overlay"></b>
+	<!--wrapper-->
+	<div class="wrapper">
+
+<!--start top header wrapper-->
+
+{% include 'app/S-head.html' %}
+
+<!--end top header wrapper-->
+
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--start breadcrumb-->
+				<section class="py-3 border-bottom d-none d-md-flex">
+					<div class="container">
+						
+					</div>
+				</section>
+				<!--end breadcrumb-->
+				<!--start form area-->
+				<section class="py-4">
+					<div class="container">
+						<div class="row">
+							<div class="col-12 col-xl-12">
+								<div class="product-wrapper">
+									<div class="toolbox d-lg-flex align-items-center mb-3 gap-2 p-3 bg-dark-1">
+										<div class="d-flex flex-wrap flex-grow-1 gap-1">
+											<div class="d-flex align-items-center flex-nowrap">
+												<div><a href="{% url 'allProductpage' %}" class="btn btn-light rounded-0">All Products</a>
+												</div>
+												<div><a href="{% url 'addproductpage' %}" class="btn btn-white rounded-0">Add Products</a>
+												</div>
+											</div>
+										</div>										
+									</div>
+                           
+							<div class="col-12 col-xl-9">
+								<div class="product-wrapper">
+									<h2 style="text-align: center;">ADD PRODUCT</h2>
+                                    <form class="row g-3" action="{% url 'addpro' %}" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+                                        <div class="col-12">
+                                            <label for="inputEmailAddress" class="form-label">Product Name<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control" name="pname" placeholder="Enter Product Name" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputEmailAddress" class="form-label">Product Title</label>
+                                            <textarea class="form-control rounded-0" name="ptitle" placeholder="Enter Product Descriptions"></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputEmailAddress" class="form-label">Product Image<span style="color: red">*</span></label>
+                                            <input type="file" class="form-control" name="pimage" placeholder="Enter Product Name" required  style="width: 15.5rem;">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputEmailAddress" class="form-label">Product Catergory<span style="color: red">*</span></label>
+                                            <select name="pcat" class="form-select flex-shrink-0" style="width: 15.5rem;" required>
+                                                <option selected disabled>Select Catergory</option>
+												<option>Indoor Sports Games</option>
+                                                <option>Outdoor Sports Games</option>
+                                                <option>PC & RPG Games</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputEmailAddress" class="form-label">Product Price<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control" name="pprice" placeholder="Enter Product Price" required maxlength="10" pattern="[0-9]+([\.,][0-9]+)?">
+                                        </div>
+										<div class="col-12">
+                                            <label for="inputEmailAddress" class="form-label">Product MRP<span style="color: red">*</span></label>
+                                            <input type="text" class="form-control" name="pMRP" placeholder="Enter Product Price" required maxlength="10" pattern="[0-9]+([\.,][0-9]+)?">
+                                        </div>
+										<div class="col-12">
+                                        <div class="product-action mt-2">
+                                            <div class="d-flex gap-2">
+												<button type="submit" class="btn btn-light">Add Product<i class="bx bx-plus"></i></button>
+                                            </div>
+										</div>
+                                        </div>
+                                    </form>
+                                   <hr>
+									
+								</div>
+							</div>
+						</div>
+						<!--end row-->
+					</div>
+				</section>
+				<!--end form area-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+<!--start footer section-->
+{% include 'app/S-foot.html' %}
+
+<!--end footer section-->
+	
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+	</div>
+	<!--end wrapper-->
+	<!-- Bootstrap JS -->
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<!--plugins-->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
+	<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
+	<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+	<script src="{% static 'plugins/nouislider/nouislider.min.js' %}"></script>
+	<script src="{% static 'js/price-slider.js' %}"></script>
+	<script src="{% static 'js/product-gallery.js' %}"></script>
+	<!--app JS-->
+	<script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

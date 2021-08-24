@@ -1,0 +1,221 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{% static 'images/sportmall.png' %}" type="image/png" />
+	<!--plugins-->
+	<link href="{% static 'plugins/OwlCarousel/css/owl.carousel.min.css'  %}" rel="stylesheet" />
+	<link href="{% static 'plugins/simplebar/css/simplebar.css'  %}" rel="stylesheet" />
+	<link href="{% static 'plugins/perfect-scrollbar/css/perfect-scrollbar.css'  %}" rel="stylesheet" />
+	<link href="{% static 'plugins/metismenu/css/metisMenu.min.css'  %}" rel="stylesheet" />
+	<!-- loader-->
+	<link href="{% static 'css/pace.min.css'  %}" rel="stylesheet" />
+	<script src="assets/js/pace.min.js"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{% static 'css/bootstrap.min.css'  %}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="{% static 'css/app.css'  %}" rel="stylesheet">
+	<link href="{% static 'css/icons.css'  %}" rel="stylesheet">
+	<title>SportMart | Seller-Show Product</title>
+</head>
+
+<body class="bg-theme bg-theme9">	<b class="screen-overlay"></b>
+	<!--wrapper-->
+	<div class="wrapper">
+		<!--start top header wrapper-->
+		{% include 'app/S-head.html' %}
+		<!--end top header wrapper-->
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--start breadcrumb-->
+				<section class="py-3 border-bottom d-none d-md-flex">
+					<div class="container">
+						<div class="page-breadcrumb d-flex align-items-center">
+							<h3 class="breadcrumb-title pe-3">{{data.Product_Name}}</h3>
+						</div>
+					</div>
+				</section>
+				<!--end breadcrumb-->
+				<!--start product detail-->
+				<section class="py-4">
+					<div class="container">
+						<div class="product-detail-card">
+							<div class="product-detail-body">
+								<div class="row g-0">
+									<div class="col-12 col-lg-5">
+										<div class="image-zoom-section">
+											<div >
+												<div class="item">
+													<img src="{{MEDIA_URL}}{{data.Product_Image.url}}" class="img-fluid" alt="" height="200" width="300" style="margin-top: 50px; margin-left: 50px; margin-bottom: 50px; margin-right: 50px;">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-lg-7">
+										<div class="product-info-section p-3">
+											<h3 class="mt-3 mt-lg-0 mb-0">{{data.Product_Name}}</h3>
+											<div class="product-rating d-flex align-items-center mt-2">
+												<div class="rates cursor-pointer font-13">	<i class="bx bxs-star text-warning"></i>
+													<i class="bx bxs-star text-warning"></i>
+													<i class="bx bxs-star text-warning"></i>
+													<i class="bx bxs-star text-warning"></i>
+													<i class="bx bxs-star text-light-4"></i>
+												</div>
+											</div>
+											<div class="d-flex align-items-center mt-3 gap-2">
+												<h4 class="mb-0">₹{{data.Product_Price}}</h4>
+												<h5 class="mb-0 text-decoration-line-through text-light-3">₹{{data.Product_MRP}}</h5>
+											</div>
+											<div class="mt-3">
+												<h6>Discription :</h6>
+												<p class="mb-0">{{data.Product_Title}}</p>
+											</div>
+											<dl class="row mt-3">	
+												<dt class="col-sm-3">Product id</dt><dd class="col-sm-9">#{{data.id}}</dd>
+												<dt class="col-sm-3">Seller </dt><dd class="col-sm-9">{{data.Seller_ID}}</dd>	
+												<dt class="col-sm-3">Product Category</dt><dd class="col-sm-9">{{data.Product_Category}}</dd>
+											</dl>
+											<!--end row-->
+											<div class="d-flex gap-2 mt-3">
+												<a href="{% url 'editPro' pk=data.id %}" class="btn btn-light btn-ecomm">	<i class="bx bxs-edit"></i>Update Product</a>
+                                                <a href="{% url 'deleteprod' pk=data.id %}" class="btn btn-light btn-ecomm"> <i class="bx bxs-trash"></i>Delete Product</a>
+                                            </div>
+											<hr/>
+										</div>
+									</div>
+								</div>
+								<!--end row-->
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--end product detail-->
+				<!--start product more info-->
+				<section class="py-4">
+					<div class="container">
+						<div class="product-more-info">
+							<ul class="nav nav-tabs mb-0" role="tablist">
+								<li class="nav-item" role="presentation">
+									<a class="nav-link active" data-bs-toggle="tab" href="#discription" role="tab" aria-selected="true">
+										<div class="d-flex align-items-center">
+											<div class="tab-title text-uppercase fw-500">Description</div>
+										</div>
+									</a>
+								</li>
+								<li class="nav-item" role="presentation">
+									<a class="nav-link" data-bs-toggle="tab" href="#reviews" role="tab" aria-selected="false">
+										<div class="d-flex align-items-center">
+											<div class="tab-title text-uppercase fw-500">({{count}}) Reviews</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+							<div class="tab-content pt-3">
+								<div class="tab-pane fade show active" id="discription" role="tabpanel">
+									<p>{{data.Product_Title}}</p>
+								</div>
+								<div class="tab-pane fade" id="more-info" role="tabpanel">
+									<p>{{data.Product_Title}}</p>
+								</div>
+								<div class="tab-pane fade" id="reviews" role="tabpanel">
+									<div class="row">
+										<div>
+											<div class="product-review">
+												<h5 class="mb-4">{{count}} Reviews For The Product</h5>
+                                                <hr>
+												<div class="review-list">
+													<!-- start review-content -->
+													{% for i in rev %}
+													<div class="d-flex align-items-start">
+														<div class="review-content ms-3">
+															<div class="rates cursor-pointer fs-6">	
+																{% if i.rating == 1 %}
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																{% elif i.rating == 2 %}
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																{% elif i.rating == 3 %}
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																{% elif i.rating == 4 %}
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																{% elif i.rating == 5 %}
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																<i class="bx bxs-star text-white"></i>
+																{% else %}
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																<i class="bx bxs-star text-light-4"></i>
+																{% endif %}
+															</div>
+															<div class="d-flex align-items-center mb-2">
+																<h6 class="mb-0">{{i.getuser}}</h6>
+																<span class="btn btn-light" style="margin-left:990px; margin-right: 20px;">{{i.Review_Date}}</span>
+															</div>
+															<p>{{i.Review}}</p>
+														</div>
+													</div>
+													<hr>
+													{% endfor %}
+													<!-- end review-content -->
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--end row-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--end product more info-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+		<!--start footer section-->
+		{% include 'app/S-foot.html' %}
+		<!--end footer section-->
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+	</div>
+	<!--end wrapper-->
+	<!-- Bootstrap JS -->
+		<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+		<!--plugins-->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
+		<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
+		<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
+		<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
+		<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+		<!--app JS-->
+		<script src="{% static 'js/app.js' %}"></script>
+		<script src="{% static 'js/index.js' %}"></script>	
+</body>
+
+</html>

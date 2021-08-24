@@ -1,0 +1,91 @@
+{% load static %}
+
+<!--start top header wrapper-->
+<div class="header-wrapper bg-dark-1">
+    <div class="top-menu border-bottom">
+        <div class="container">
+            <nav class="navbar navbar-expand">
+                <div class="shiping-title text-uppercase font-13 text-white d-none d-sm-flex">Welcome to our SportMart..</div>
+                <ul class="navbar-nav ms-auto d-none d-lg-flex">
+                    <li class="nav-item"><h5 style="font-family: cursive;">{{request.session.Sname}}</h5>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="header-content pb-3 pb-md-0">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col col-md-auto">
+                    <div class="d-flex align-items-center">
+                        <div class="mobile-toggle-menu d-lg-none px-lg-2" data-trigger="#navbar_main"><i class='bx bx-menu'></i>
+                        </div>
+                        <div class="logo d-none d-lg-flex">
+                            <a href="index.html">
+                                <img src="assets/images/logo-icon.png" class="logo-icon" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md order-4 order-md-2">
+                    <div class="input-group flex-nowrap px-xl-4">
+                        <h2 style="font-family: cursive;">{{slr.shop_name}}</h2>
+                        <!-- <input type="text" class="form-control w-100" placeholder="Search for Products">
+                        <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span> -->
+                    </div>
+                </div>
+                <div class="col col-md-auto order-2 order-md-4">
+                    <div class="top-cart-icons">
+                        <nav class="navbar navbar-expand">
+                            <ul class="navbar-nav social-link ms-lg-2 ms-auto">
+                                <li class="nav-item dropdown"> <a class="nav-link cart-link" href="#" data-bs-toggle="dropdown"><i class='bx bx-user'></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'Sprofile' %}">Profile</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="{% url 'Sorder' %}">Orders</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="{% url 'addproductpage' %}">Add Product</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="{% url 'Schang' %}">Change Password</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Payment Details</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="{% url 'S_LogOut' %}" class="nav-link cart-link"><i class='bx bx-log-in-circle'></i></a>
+                                </li>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--end row-->
+        </div>
+    </div>
+    <div class="primary-menu border-top">
+        <div class="container">
+            <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg">
+                <div class="offcanvas-header">
+                    <button class="btn-close float-end"></button>
+                    <h5 class="py-2 text-white">Navigation</h5>
+                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item active"> <a class="nav-link" href="{% url 'indexpage' %}">Home </a> 
+                    </li>
+                    <li class="nav-item active"> <a class="nav-link" href="{% url 'Sorder' %}">Orders </a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'allProductpage' %}">My Products</a> 
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">My Payment</a> 
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto d-none d-lg-flex">
+                    <li class="nav-item"><h5 style="font-style:oblique;">{{request.session.shop_name}}</h5>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!--end top header wrapper-->

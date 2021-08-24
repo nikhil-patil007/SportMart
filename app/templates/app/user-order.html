@@ -1,0 +1,385 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--favicon-->
+        <link rel="icon" href="{% static 'images/sportmall.png' %}" type="image/png" />
+        <!--plugins-->
+        <link href="{% static 'plugins/OwlCarousel/css/owl.carousel.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
+        <link href="{% static 'plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet" />
+        <link href="{% static 'plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'plugins/nouislider/nouislider.min.css' %}" rel="stylesheet" />
+        <!-- loader-->
+        <link href="{% static 'css/pace.min.css' %}" rel="stylesheet" />
+        <script src="{% static 'js/pace.min.js' %}"></script>
+        <!-- Bootstrap CSS -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+        <link href="{% static 'css/app.css' %}" rel="stylesheet">
+        <link href="{% static 'css/icons.css' %}" rel="stylesheet">
+        <title>SportMart | User-Order</title>
+    </head>
+
+
+
+<body class="bg-theme bg-theme9">	<b class="screen-overlay"></b>
+	<!--wrapper-->
+	<div class="wrapper">
+		<!--start top header wrapper-->
+		{% include 'app/user-head.html' %}
+		<!--end top header wrapper-->
+				{% if odr in order %}
+                <!--start shop cart-->
+				<section class="py-4">
+					<div class="container">
+						<h3 class="d-none">Account</h3>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-lg-15">
+										<div class="card shadow-none mb-0">
+											<div class="card-body">
+												<div class="table-responsive">
+													<table class="table">
+														<thead class="table-light">
+															<tr>
+																<th>Order ID</th>
+                                                                <th>Date</th>
+																<th>Product Name</th>
+                                                                <th>Billing Address</th>
+																<th>Status</th>
+																<th>Product Price</th>
+																<th>Track Order</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>#000</td>
+																<td>Novermber 15, 2021</td>
+                                                                <td>Nikhil Patil</td>
+                                                                <td>
+                                                                    <address>
+                                                                        Madison Riiz,
+                                                                        123 Happy Street,
+                                                                        Cape Town,
+                                                                        Western Cape,
+                                                                        8001,
+                                                                        South Africa
+                                                                    </address>
+                                                                </td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100" style="color: rgb(4, 248, 4);"><i class="bx bxs-check-circle"></i>  Completed</div>
+																</td>
+                                                                <td>$ 150</td>
+																<td>
+																	<div class="d-flex gap-2">	<a href="#" class="btn btn-light btn-sm rounded-0">Track Order</a>
+																	</div>
+																</td>
+															</tr>
+															<!-- <tr>
+																<td>#796</td>
+																<td>Novermber 12, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Failed</div>
+																</td>
+																<td>$100.00 for 1 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Pay</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#859</td>
+																<td>Novermber 10, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Failed</div>
+																</td>
+																<td>$100.00 for 1 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Pay</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Cancel</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#869</td>
+																<td>Novermber 9, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Cancelled</div>
+																</td>
+																<td>$120.00 for 1 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Pay</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#829</td>
+																<td>Novermber 8, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Completed</div>
+																</td>
+																<td>$224.00 for 2 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#879</td>
+																<td>Novermber 8, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Completed</div>
+																</td>
+																<td>$126.00 for 3 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#863</td>
+																<td>Novermber 4, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Failed</div>
+																</td>
+																<td>$200.00 for 2 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Pay</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Cancel</a>
+																	</div>
+																</td>
+															</tr> -->
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--end row-->
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--end shop cart-->
+                {% else %}
+                <!--start shop cart-->
+				<section class="py-4">
+					<div class="container">
+						<h3 class="d-none">Account</h3>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-lg-15">
+										<div class="card shadow-none mb-0">
+											<div class="card-body">
+												<div class="table-responsive">
+													<table class="table">
+														<thead class="table-light">
+															<tr>
+																<th>Order ID</th>
+                                                                <th>Date</th>
+																<th>Product Name</th>
+                                                                <th>Billing Address</th>
+																<th>Status</th>
+																<th>Product Price</th>
+																<th>Track Order</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+																<td style="text-align: center;">No Order Found</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+															</tr>
+															<!-- <tr>
+																<td>#796</td>
+																<td>Novermber 12, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Failed</div>
+																</td>
+																<td>$100.00 for 1 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Pay</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#859</td>
+																<td>Novermber 10, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Failed</div>
+																</td>
+																<td>$100.00 for 1 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Pay</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Cancel</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#869</td>
+																<td>Novermber 9, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Cancelled</div>
+																</td>
+																<td>$120.00 for 1 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Pay</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#829</td>
+																<td>Novermber 8, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Completed</div>
+																</td>
+																<td>$224.00 for 2 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#879</td>
+																<td>Novermber 8, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Completed</div>
+																</td>
+																<td>$126.00 for 3 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>#863</td>
+																<td>Novermber 4, 2021</td>
+																<td>
+																	<div class="badge rounded-pill bg-light w-100">Failed</div>
+																</td>
+																<td>$200.00 for 2 item</td>
+																<td>
+																	<div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Pay</a>
+																		<a href="javascript:;" class="btn btn-light btn-sm rounded-0">Cancel</a>
+																	</div>
+																</td>
+															</tr> -->
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--end row-->
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--end shop cart-->
+                {% endif %}
+			</div>
+		</div>
+		<!--end page wrapper -->
+		<!--start footer section-->
+		{% include 'app/S-foot.html' %}
+		<!--end footer section-->
+        <!--start quick view product-->
+		<!-- Modal -->
+		<div class="modal fade" id="QuickViewProduct">
+			<div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                <div class="modal-content bg-dark-4 rounded-0 border-0">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                        <dl class="row mt-3">	<dt class="col-sm-3">Order id</dt>
+                            <dd class="col-sm-9">#BHU5879</dd>	<dt class="col-sm-3">Customer Name</dt>
+                            <dd class="col-sm-9">All Over</dd>
+                        </dl>
+						<div class="row g-0">
+							<div class="col-lg-4">
+									<div>
+										<div class="item">
+											<img src="{% static 'images/product-gallery/01.png' %}" class="img-fluid" alt="" width="200" height="100" style="margin-top: 50px; margin-left: 50px; margin-right: 50px; margin-bottom: 50px;">
+										</div>
+									</div>
+							</div>
+							<div class="col-9 col-lg-6">
+								<div class="product-info-section p-3">
+									<h3 class="mt-3 mt-lg-0 mb-0">Allen Solly Men's Polo T-Shirt</h3>
+									<div class="d-flex align-items-center mt-3 gap-2">
+										<h5 class="mb-0 text-decoration-line-through text-light-3">$98.00</h5>
+										<h4 class="mb-0">$49.00</h4>
+									</div>
+									<div class="mt-3">
+										<h6>Discription :</h6>
+										<p class="mb-0">Virgil Abloh’s Off-White is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown Odsy-1000 low-top sneakers.</p>
+									</div>
+									<dl class="row mt-3">	<dt class="col-sm-3">Product id</dt>
+										<dd class="col-sm-9">#BHU5879</dd>	<dt class="col-sm-3">Delivery At</dt>
+										<dd class="col-sm-9">All Over</dd>
+									</dl>
+									</div>
+									<!--end row-->
+                                    <div class="d-flex gap-2 mt-3">
+                                        <div class="d-flex gap-2 mt-3">
+                                            <label for="inputEmailAddress" class="form-label">Order Status</label>
+                                            <select name="OrderStatus" class="form-select flex-shrink-0" style="width: 15.5rem;" required>
+                                                <option selected disabled>Select Order Action</option>
+                                                <option> Confirm Order</option>
+                                                <option>Wait Order</option>
+                                                <option>Cancel Order</option>
+                                            </select>
+                                        </div>                    
+                                        <div class="d-flex gap-2 mt-3">
+                                            <button type="submit" class="btn btn-light"><i class="bx bxs-check-circle"></i>Done TO order</button>
+                                        </div>
+                                    </div>
+								</div>
+							</div>
+						</div>
+						<!--end row-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end quick view product-->
+	</div>
+	<!--end wrapper-->
+    
+	<!-- Bootstrap JS -->
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<!--plugins-->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
+	<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
+	<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+	<script src="{% static 'plugins/nouislider/nouislider.min.js' %}"></script>
+	<script src="{% static 'js/price-slider.js' %}"></script>
+	<script src="{% static 'js/product-gallery.js' %}"></script>
+	<!--app JS-->
+	<script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

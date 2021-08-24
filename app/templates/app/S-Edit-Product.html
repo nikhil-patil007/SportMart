@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{% static 'images/sportmall.png' %}" type="image/png" />
+	<!--plugins-->
+	<link href="{% static 'plugins/OwlCarousel/css/owl.carousel.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/nouislider/nouislider.min.css' %}" rel="stylesheet" />
+	<!-- loader-->
+	<link href="{% static 'css/pace.min.css' %}" rel="stylesheet" />
+	<script src="{% static 'js/pace.min.js' %}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="{% static 'css/app.css' %}" rel="stylesheet">
+	<link href="{% static 'css/icons.css' %}" rel="stylesheet">
+	<title>SportMart | Seller-Edit Product</title>
+</head>
+<body class="bg-theme bg-theme9">	<b class="screen-overlay"></b>
+	<!--wrapper-->
+	<div class="wrapper">
+
+<!--start top header wrapper-->
+
+{% include 'app/S-head.html' %}
+<!--end top header wrapper-->
+   
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+            <div class="modal-content bg-dark-4 rounded-0 border-0">
+                <div class="modal-body">
+                    <a href="{% url 'showprod' pk=data.id %}" class="btn-close float-end"></a>
+                    <div class="row g-0">
+                        <div class="col-12 col-lg-6">
+                            <div class="image-zoom-section">
+                                <div data-slider-id="1">
+                                    <div class="item">
+                                        <img src="{{MEDIA_URL}}{{data.Product_Image.url}}" class="img-fluid" alt="" height="200" width="300" style="margin-top: 50px; margin-left: 50px; margin-bottom: 50px; margin-right: 50px;">
+                                    </div>
+                                    <form action="{% url 'upload' pk=data.id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                                        <div class="item">
+                                            <input type="file" class="form-control" name="pimage" placeholder="Enter Product Name" required  style="width: 15.5rem;">
+                                        </div>
+                                        <br>
+                                        <div class="item">
+                                            <button type="submit" class="btn btn-light">Upload Image <i class="bx bx-upload"></i> </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <form class="row g-3" action="{% url 'UpdatePro' pk=data.id %}" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+                                <div class="col-12">
+                                    <label for="inputEmailAddress" class="form-label">Product Name<span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" name="pname"  value="{{data.Product_Name}}"  placeholder="Enter Product Name" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="inputEmailAddress" class="form-label">Product Title</label>
+                                    <input type="text" class="form-control" name="ptitle"  value="{{data.Product_Title}}"  placeholder="Enter Product Descriptions" required>
+                                    <!-- <textarea class="form-control rounded-0" name="ptitle" aria-valuetext="{{data.Product_Title}}" placeholder="Enter Product Descriptions"></textarea> -->
+                                </div>
+                                <div class="col-12">
+                                    <label for="inputEmailAddress" class="form-label">Product Catergory<span style="color: red">*</span></label>
+                                    <select name="pcat" class="form-select flex-shrink-0" style="width: 15.5rem;" required >
+                                        <option selected disabled>{{data.Product_Category}}</option>
+                                        <option>Indoor Sports Games</option>
+                                        <option>Outdoor Sports Games</option>
+                                        <option>PC & RPG Games</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Product Selling Price<span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" name="pprice" value="{{data.Product_Price}}" placeholder="Enter Product Price" required maxlength="10" pattern="[0-9]+([\.,][0-9]+)?">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Product MRP<span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" name="pMRP" value="{{data.Product_MRP}}" placeholder="Enter Product Price" required maxlength="10" pattern="[0-9]+([\.,][0-9]+)?">
+                                </div>
+                                <div class="col-12">
+                                <div class="product-action mt-2">
+                                    <div class="d-flex gap-2">
+                                        <button type="submit" class="btn btn-light">Save Change<i class="bx bx-refresh"></i> </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                                <!--end row-->
+                
+                            </div>
+                        </div>
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+<!--start footer section-->
+{% include 'app/S-foot.html' %}
+
+<!--end footer section-->
+    </div>
+	<!--end wrapper-->
+	<!-- Bootstrap JS -->
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<!--plugins-->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
+	<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
+	<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+	<script src="{% static 'plugins/nouislider/nouislider.min.js' %}"></script>
+	<script src="{% static 'js/price-slider.js' %}"></script>
+	<script src="{% static 'js/product-gallery.js' %}"></script>
+	<!--app JS-->
+	<script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>

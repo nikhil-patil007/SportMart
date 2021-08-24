@@ -1,0 +1,115 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{% static 'images/sportmall.png' %}" type="image/png" />
+	<!--plugins-->
+	<link href="{% static 'plugins/OwlCarousel/css/owl.carousel.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/nouislider/nouislider.min.css' %}" rel="stylesheet" />
+	<!-- loader-->
+	<link href="{% static 'css/pace.min.css' %}" rel="stylesheet" />
+	<script src="{% static 'js/pace.min.js' %}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="{% static 'css/app.css' %}" rel="stylesheet">
+	<link href="{% static 'css/icons.css' %}" rel="stylesheet">
+	<title>SportMart | User-Login</title>
+</head>
+
+<body class="bg-theme bg-theme9">	<b class="screen-overlay"></b>
+	<!--wrapper-->
+	<div class="wrapper">
+<!--start top header wrapper-->
+
+{% include 'app/user-head.html' %}
+
+
+<!--end top header wrapper-->	
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--start shop cart-->
+				<section class="">
+					<div class="container">
+						<div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
+							<div class="row row-cols-1 row-cols-xl-2">
+								<div class="col mx-auto">
+									<div class="card">
+										<div class="card-body">
+                                            <div class="text-center">
+                                                <h2 style="font-family: cursive;">User-Login</h2>
+                                            </div>
+											<div class="border p-4 rounded">
+												<div class="form-body">
+													<form class="row g-3" action="{% url 'loginuser' %}" method="POST">{% csrf_token %}
+                                                        {% if err %}
+                                                        <h4><p style=" color: rgba(255, 60, 0, 0.973); font-family: cursive; ">{{err}}</p></h4>
+                                                        {% endif %}  
+														<div class="col-12">
+															<label for="inputEmailAddress" class="form-label">Email Or UserName<span style="color: red">*</span></label>
+															<input type="text" class="form-control" name="Uemail" placeholder="Email Address" required>
+														</div>
+														<div class="col-12">
+															<label for="inputChoosePassword" class="form-label">Password<span style="color: red">*</span></label>
+															<div class="input-group" id="show_hide_password">
+																<input type="password" class="form-control border-end-0" name="Upassword" value="12345678" placeholder="Enter Password" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+															</div>
+														</div>
+														<div class="col-md-6">	<a href="{% url 'Uforgotpassword' %}" style="color:rgba(255, 94, 0, 0.973);">Forgot Password ?</a>
+														</div>
+														<div class="col-12">
+															<div class="d-grid">
+																<button type="submit" class="btn btn-light"><i class="bx bxs-lock-open"></i>Sign in</button>
+															</div>
+                                                            <br>
+                                                            <div class="text-center">
+                                                                <p>Don't have an account yet? <a style="color: #ff0000;" href="{% url 'UregisterPage' %}">Sign up here</a>
+                                                                </p>
+                                                            </div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--end row-->
+						</div>
+					</div>
+				</section>
+				<!--end shop cart-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+		
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+	</div>
+	<!--end wrapper-->
+	<!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<!--plugins-->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
+	<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
+	<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+	<!--app JS-->
+	<script src="{% static 'js/app.js' %}"></script>
+	<!--Password show & hide js -->
+	<script src="{% static 'js/show-hide-password.js' %}"></script>
+</body>
+
+</html>
