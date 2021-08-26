@@ -1,0 +1,24 @@
+{% load static %}
+<nav class="navbar p-l-5 p-r-5">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="{% url 'Aindex' %}"><img
+                        src="{% static 'assets\images\sportmall.png' %}" width="30"></a>
+            </div>
+        </li>
+        </li>
+        <li class="d-none d-md-inline-block">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-addon">
+                    <i class="zmdi zmdi-search"></i>
+                </span>
+            </div>
+        </li>
+        <li class="float-right">
+            <a title="Log-Out" href="{% url 'logout' %}" class="mega-menu" data-close="true"><i class="zmdi zmdi-power" style="font-size: 30px; margin-right: 20px;"></i></a>
+        </li>
+    </ul>
+</nav>

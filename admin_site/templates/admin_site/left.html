@@ -1,0 +1,37 @@
+{% load static %}
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    <div class="tab-content">
+        <div class="tab-pane stretchRight active" id="dashboard">
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <div class="user-info">
+                            <img src="{% static 'assets\images\sportmart.png' %}" style="margin-top: 10px; margin-bottom: 10px;" alt="">
+                            <div class="detail">
+                                <h4>Admin</h4>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="active open"><a href="{% url 'Aindex' %}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
+                    <li class="">
+                        <a href="{% url 'AUsers' %}"><i class="zmdi zmdi-account"></i><span>Users</span></a>
+                    </li>
+                    <li class=""><a href="{% url 'Aseller' %}"><i class="zmdi zmdi-store"></i><span>Sellers</span></a>
+                    </li>
+                    <li class=""><a href="{% url 'Aproduct' %}"><i class="zmdi zmdi-collection-plus"></i><span>Products</span></a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'Aorder' %}"><i class="zmdi zmdi-hourglass-alt"></i><span>Orders</span></a>
+                    </li>
+                    <li class=""><a href="{% url 'Acat' %}"><i class="zmdi zmdi-labels"></i><span>Categories</span></a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'Arat' %}"><i class="zmdi zmdi-star"></i><span>Rating</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</aside>
+<!-- Left Sidebar -->

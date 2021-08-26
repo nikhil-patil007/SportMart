@@ -94,55 +94,87 @@ def U_showpage(request,pk):
 
 # Method Functions.
 
+# def orders(request):
+#     if 'uid' in request.session:
+#         getuser = User.objects.get(id=request.session['uid'])
+#         getcart = Cart.objects.filter(User_Id=getuser)
+
+#         ordere = Order.objects.create(
+#             User_Id = getuser,
+#             cart = getcart,
+#         )
+#         return redirect("Checkcompl")
+#     else:
+#         return redirect("index")
+
 
 # Register User
 def U_Register(request):
-    if request.method == 'POST':
-        Un = request.POST['Username']
-        Fn = request.POST['Fname']
-        Ln = request.POST['Lname']
-        Em = request.POST['Uemail']
-        Ph = request.POST['Uphone']
-        Adr1 = request.POST['Uadd1']
-        Adr2 = request.POST['Uadd2']
-        City = request.POST['UCity']
-        State = request.POST['UState']
-        pin = request.POST['Upin']
-        Pwd = request.POST['Upassword']
+    try:
+        if request.method == 'POST':
+            Un = request.POST['Username']
+            Fn = request.POST['Fname']
+            Ln = request.POST['Lname']
+            Em = request.POST['Uemail']
+            Ph = request.POST['Uphone']
+            Adr1 = request.POST['Uadd1']
+            Adr2 = request.POST['Uadd2']
+            City = request.POST['UCity']
+            State = request.POST['UState']
+            pin = request.POST['Upin']
+            Pwd = request.POST['Upassword']
 
-        slr = User.objects.create(Username=Un,Ufname=Fn,Ulname=Ln,Uemail=Em,Umobile=Ph,Uaddress1=Adr1,Uaddress2=Adr2,UCity=City,UState=State,UPincode=pin,Upassword=Pwd)
-        return redirect("Userlogin")
-    else:
-        msg = "Method Changes"
-        return render(request, "app/user-Register.html",{'err':msg})
+            slr = User.objects.create(Username=Un,Ufname=Fn,Ulname=Ln,Uemail=Em,Umobile=Ph,Uaddress1=Adr1,Uaddress2=Adr2,UCity=City,UState=State,UPincode=pin,Upassword=Pwd)
+            return redirect("Userlogin")
+        else:
+            msg = "Method Changes"
+            return render(request, "app/user-Register.html",{'err':msg})
+    except:
+        if request.method == 'POST':
+            Un = request.POST['Username']
+            Fn = request.POST['Fname']
+            Ln = request.POST['Lname']
+            Em = request.POST['Uemail']
+            Ph = request.POST['Uphone']
+            Pwd = request.POST['Upassword']
+
+            slr = User.objects.create(Username=Un,Ufname=Fn,Ulname=Ln,Uemail=Em,Umobile=Ph,Upassword=Pwd)
+            return redirect("Userlogin")
+        else:
+            msg = "Method Changes"
+            return render(request, "app/user-Register.html",{'err':msg})
 
 # Login User
 def U_login(request):
-    Em = request.POST['Uemail']
-    Pwd = request.POST['Upassword']
+    try:
+        Em = request.POST['Uemail']
+        Pwd = request.POST['Upassword']
 
-    usr = User.objects.filter(Uemail=Em)
-    us = User.objects.filter(Username=Em)
-    if len(usr) > 0:
-        if usr[0].Upassword == Pwd:
-            request.session['uid']= usr[0].id
-            request.session['Fname']= usr[0].Ufname
-            request.session['Uemail']= usr[0].Uemail
+        usr = User.objects.filter(Uemail=Em)
+        us = User.objects.filter(Username=Em)
+        if len(usr) > 0:
+            if usr[0].Upassword == Pwd:
+                request.session['uid']= usr[0].id
+                request.session['Fname']= usr[0].Ufname
+                request.session['Uemail']= usr[0].Uemail
 
-            return redirect("index")
+                return redirect("index")
+            else:
+                msg = "Password is Incorrect..!"
+                return render(request, "app/user-login.html",{'err':msg})
+        elif len(us) > 0:
+            if us[0].Upassword == Pwd:
+                request.session['uid']= us[0].id
+                request.session['Fname']= us[0].Ufname
+                request.session['Uemail']= us[0].Uemail
+                return redirect("index")
+            else:
+                msg = "Password is Incorrect..!"
+                return render(request, "app/user-login.html",{'err':msg})
         else:
-            msg = "Password is Incorrect..!"
+            msg = "User Doesn't Found"
             return render(request, "app/user-login.html",{'err':msg})
-    elif len(us) > 0:
-        if us[0].Upassword == Pwd:
-            request.session['uid']= us[0].id
-            request.session['Fname']= us[0].Ufname
-            request.session['Uemail']= us[0].Uemail
-            return redirect("index")
-        else:
-            msg = "Password is Incorrect..!"
-            return render(request, "app/user-login.html",{'err':msg})
-    else:
+    except:
         msg = "User Doesn't Found"
         return render(request, "app/user-login.html",{'err':msg})
 
@@ -433,94 +465,125 @@ def S_Pro_Edit_page(request,pk):
 
 # Register Seller
 def S_Registeruser(request):
-    if request.method == 'POST':
-        un = request.POST['username']
-        sn = request.POST['sname']
-        shn = request.POST['shopname']
-        em = request.POST['email']
-        ph = request.POST['phone']
-        adr1 = request.POST['add1']
-        adr2 = request.POST['add2']
-        city = request.POST['City']
-        state = request.POST['State']
-        pincode = request.POST['pin']
-        pwd = request.POST['password']
+    try:
+        if request.method == 'POST':
+            un = request.POST['username']
+            sn = request.POST['sname']
+            shn = request.POST['shopname']
+            em = request.POST['email']
+            ph = request.POST['phone']
+            adr1 = request.POST['add1']
+            adr2 = request.POST['add2']
+            city = request.POST['City']
+            state = request.POST['State']
+            pincode = request.POST['pin']
+            pwd = request.POST['password']
 
-        slr = seller.objects.create(username=un,Sname=sn,shop_name=shn,email=em,mobile=ph,address1 = adr1,address2 = adr2,City = city,state = state,Pincode = pincode,password=pwd)
-        return redirect("loginpage")
-    else:
-        msg = "Method Changes"
-        return render(request, "app/S-Reg.html",{'err':msg})
+            slr = seller.objects.create(username=un,Sname=sn,shop_name=shn,email=em,mobile=ph,address1 = adr1,address2 = adr2,City = city,state = state,Pincode = pincode,password=pwd)
+            return redirect("loginpage")
+        else:
+            msg = "Method Changes"
+            return render(request, "app/S-Reg.html",{'err':msg})
+    except:
+        if request.method == 'POST':
+            un = request.POST['username']
+            sn = request.POST['sname']
+            shn = request.POST['shopname']
+            em = request.POST['email']
+            ph = request.POST['phone']
+            city = request.POST['City']
+            state = request.POST['State']
+            pwd = request.POST['password']
+
+            slr = seller.objects.create(username=un,Sname=sn,shop_name=shn,email=em,mobile=ph,City = city,state = state,password=pwd)
+            return redirect("loginpage")
+        else:
+            msg = "Method Changes"
+            return render(request, "app/S-Reg.html",{'err':msg})
 
 # Login Seller
 def S_Loginuser(request):
-    em = request.POST['email']
-    pwd = request.POST['password']
+    try:
+        em = request.POST['email']
+        pwd = request.POST['password']
 
-    user = seller.objects.filter(email=em)
-    if len(user) > 0:
-        if user[0].password == pwd:
-            request.session['id']= user[0].id
-            request.session['Sname']= user[0].Sname
-            request.session['email']= user[0].email
+        user = seller.objects.filter(email=em)
+        if len(user) > 0:
+            if user[0].password == pwd:
+                request.session['id']= user[0].id
+                request.session['Sname']= user[0].Sname
+                request.session['email']= user[0].email
 
-            return redirect("indexpage")
+                return redirect("indexpage")
+            else:
+                msg = "Password is Incorrect..!"
+                return render(request, "app/S-Login.html",{'err':msg})
         else:
-            msg = "Password is Incorrect..!"
+            msg = "Seller Doesn't Found"
             return render(request, "app/S-Login.html",{'err':msg})
-    else:
-        msg = "Seller Doesn't Found"
+    except:
+        msg = "Sever Slow Please Try Again...."
         return render(request, "app/S-Login.html",{'err':msg})
 
 # Email Send
 def S_Send_OTP(request):
-    if request.method == 'POST':
-        em = request.POST['email']
+    try:
+        if request.method == 'POST':
+            em = request.POST['email']
 
-        user = seller.objects.filter(email=em)
-        if len(user) > 0:
-            did = seller.objects.get(email=em)
-            subject = 'SportMart Seller Forgot Password'
-            otp = ''
-            for i in range (6):
-                otp+=str(randint(1,9))
-            did.OTP = otp
-            did.save()
-            message = f'Hi {em},\nThank you for Contact to SPORTMART. \nYour OTP is {otp}.'
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [em, ]
-            # send_mail( subject, message, email_from, recipient_list )
-            return render(request, "app/S-Enter OTP.html",{'em':em,})
+            user = seller.objects.filter(email=em)
+            if len(user) > 0:
+                did = seller.objects.get(email=em)
+                subject = 'SportMart Seller Forgot Password'
+                otp = ''
+                for i in range (6):
+                    otp+=str(randint(1,9))
+                did.OTP = otp
+                did.save()
+                message = f'Hi {em},\nThank you for Contact to SPORTMART. \nYour OTP is {otp}.'
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = [em, ]
+                # send_mail( subject, message, email_from, recipient_list )
+                return render(request, "app/S-Enter OTP.html",{'em':em,})
+            else:
+                msg = "Email is Incorrect..!"
+                return render(request, "app/S-Forgot-Password.html",{'err':msg})
         else:
             msg = "Email is Incorrect..!"
             return render(request, "app/S-Forgot-Password.html",{'err':msg})
-    else:
-        msg = "Email is Incorrect..!"
+    except:
+        msg = "Sever Is Slow Please Try Again Later....."
         return render(request, "app/S-Forgot-Password.html",{'err':msg})
 
 # Otp Verify
 def S_OTP_Verify(request):
-    if request.method=="POST":
-        em = request.POST['email']
-        otp2=int(request.POST['Sotp'])
-        did = seller.objects.get(email=em)
-        if did.OTP==otp2:
-            return render(request,"app/S-Recover-Password.html",{'em':em,'otp':did.OTP})
-        else:
-            msg="Invaild OTP...!"
-            return render(request, "app/S-Enter OTP.html",{'err':msg,'em':em})
+    try:
+        if request.method=="POST":
+            em = request.POST['email']
+            otp2=int(request.POST['Sotp'])
+            did = seller.objects.get(email=em)
+            if did.OTP==otp2:
+                return render(request,"app/S-Recover-Password.html",{'em':em,'otp':did.OTP})
+            else:
+                msg="Invaild OTP...!"
+                return render(request, "app/S-Enter OTP.html",{'err':msg,'em':em})
+    except:
+        return redirect('VerifyotpS')
 
 # Recover Password
 def S_Changpassword(request):
-    if request.method=="POST":
-        em = request.POST['email']
-        otp2=int(request.POST['Sotp'])
-        pwd = request.POST['password']
-        did = seller.objects.get(email=em)
-        did.password = pwd
-        did.save()
-        msg = "Great..!\nYour Password is Change"
-        return render(request, "app/S-Login.html",{'err':msg})
+    try:
+        if request.method=="POST":
+            em = request.POST['email']
+            otp2=int(request.POST['Sotp'])
+            pwd = request.POST['password']
+            did = seller.objects.get(email=em)
+            did.password = pwd
+            did.save()
+            msg = "Great..!\nYour Password is Change"
+            return render(request, "app/S-Login.html",{'err':msg})
+    except:
+        return redirect('recoverpassword')
 
 # Seller LogOut
 def S_logOut(request):
@@ -641,24 +704,27 @@ def Update_pro(request,pk):
 
 # Update Seller Profile
 def S_Update(request):
-    if 'id' in request.session:
-        if request.method == "POST":
-            updsel = seller.objects.get(id=request.session['id'])
-            updsel.username = request.POST['username'] if request.POST['username'] else updsel.username
-            updsel.Sname = request.POST['sname'] if request.POST['sname'] else updsel.Sname
-            updsel.shop_name = request.POST['shopname'] if request.POST['shopname'] else updsel.shop_name
-            updsel.mobile = request.POST['phone'] if request.POST['phone'] else updsel.mobile
-            updsel.address1 = request.POST['add1'] if request.POST['add1'] else updsel.address1
-            updsel.address2 = request.POST['add2'] if request.POST['add2'] else updsel.address2
-            updsel.City = request.POST['City'] if request.POST['City'] else updsel.City
-            updsel.state = request.POST['State'] if request.POST['State'] else updsel.state
-            updsel.Pincode = request.POST['pin'] if request.POST['pin'] else updsel.Pincode
-            updsel.save()
-            msg = 'Save Changes'
-            return render(request, "app/S-Profile.html",{'err':msg,'slr': updsel})
+    try:
+        if 'id' in request.session:
+            if request.method == "POST":
+                updsel = seller.objects.get(id=request.session['id'])
+                updsel.username = request.POST['username'] if request.POST['username'] else updsel.username
+                updsel.Sname = request.POST['sname'] if request.POST['sname'] else updsel.Sname
+                updsel.shop_name = request.POST['shopname'] if request.POST['shopname'] else updsel.shop_name
+                updsel.mobile = request.POST['phone'] if request.POST['phone'] else updsel.mobile
+                updsel.address1 = request.POST['add1'] if request.POST['add1'] else updsel.address1
+                updsel.address2 = request.POST['add2'] if request.POST['add2'] else updsel.address2
+                updsel.City = request.POST['City'] if request.POST['City'] else updsel.City
+                updsel.state = request.POST['State'] if request.POST['State'] else updsel.state
+                updsel.Pincode = request.POST['pin'] if request.POST['pin'] else updsel.Pincode
+                updsel.save()
+                msg = 'Save Changes'
+                return render(request, "app/S-Profile.html",{'err':msg,'slr': updsel})
+            else:
+                msg = 'Method Change'
+                return render(request, "app/S-Profile.html",{'err': msg,'slr': updsel})
         else:
-            msg = 'Method Change'
-            return render(request, "app/S-Profile.html",{'err': msg,'slr': updsel})
-    else:
-        return redirect("loginpage")
+            return redirect("loginpage")
+    except:
+        return redirect("Sprofile")
 

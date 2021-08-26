@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+    <link rel="icon" href="https://thememakker.com/templates/oreo/hospital/laravel/public/favicon.ico" type="image/x-icon"> 
+    <!-- Favicon-->
+    <link rel="icon" href="{% static 'images/sportmall.png' %}" type="image/png" />
+    <title>SportMart | Admin-All-Orders</title>
+    <meta name="description" content="Oero Laravel">
+    <meta name="author" content="Oero Laravel">
+
+    <link rel="stylesheet" href="{% static 'assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\plugins\jvectormap\jquery-jvectormap-2.0.3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\plugins\morrisjs\morris.min.css' %}">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{% static 'assets\css\main.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\css\color_skins.css' %}">
+</head>
+
+<body class="theme-purple">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+
+            <div class="m-t-30"><img class="zmdi-hc-spin" src="{% static 'assets\images\logo.svg' %}" width="48"
+                    height="48" alt="Civil Hospital"></div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    {% include 'admin_site/base.html' %} 
+    {% include 'admin_site/left.html' %}
+   <section class="content home">
+        <div class="block-header">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <h2><img class="navbar-brand" src="{% static 'assets\images\Index-Icons\order.jpg' %}" width="50" style="border-radius: 100px;"/>Orders Data<small class="text-muted">Welcome to SportMart</small></h2>
+            </div>
+        </div>
+        <br>
+        <div class="body container-fluid">
+            <!-- Nav tabs -->
+    <ul class="nav nav-tabs padding-0">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#SAll">All Orders</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#SNew">New Orders</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Sconfirm">Confirm Order</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#SReject">Reject Orders</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content m-t-10">
+        <div class="tab-pane table-responsive active" id="SAll">
+            <table class="table m-b-0 table-hover" id="example" class="display">
+                <thead>
+                    <tr align="center">
+                        <th>ID</th>
+                        <th>Order Date</th>
+                        <th>User Name</th>
+                        <th>Seller Name</th>
+                        <th>Oder Products</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in patientdata %}
+                    <tr align="center">
+                        <td><span class="list-name">{{i.id}}</span></td>
+                        <td><a href="{% url 'patientsprofile' pk=i.id %}" class="btn btn-info btn-round">{{i.Fname}}</a></td>
+                        <td>{{i.Age}}</td>
+                        <td>{{i.Address}}</td>
+                        <td>{{i.Phone_Number}}</td>
+                        <td>{{i.Symptoms}}</td>
+                        <td>
+                            {% if i.status == 'Confirm' %}
+                            <span class="badge badge-success">{{i.status}}</span>
+                            {% elif i.status == 'Reject' %}
+                            <span class="badge badge-warning">{{i.status}}</span>
+                            {% elif i.status == 'New' %}
+                            <span class="badge badge-danger">{{i.status}}</span>
+                            {% elif i.status == 'waiting' %}
+                            <span class="badge badge-outline">{{i.status}}</span>
+                        {% endif %}
+                        </td>
+                        <td><a href="{% url 'patientupdatepage' pk=i.id %}" class="btn btn-dark btn-round"> Update</a></td>
+                        <td><a href="{% url 'patientsdelete' pk=i.id %}" class="btn btn-danger btn-round"
+                             onclick="return confirm('Are you really want to Delete?')">Delete</a></td>
+                             {% if i.status == 'Approve' %}
+                        <td><a href="{% url 'Selectedpatientbill' pk=i.id %}" class="btn btn-warning btn-round"
+                             onclick="return confirm('Are you really want to Dischage the patient?')">Discharge</a></td>
+                             {% else %}
+                             <td>Not Applicable</td>
+                            {% endif %}
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    
+        <div class="tab-pane table-responsive" id="SNew">
+            <table class="table m-b-0 table-hover" id="example" class="display">
+                <thead>
+                    <tr align="center">
+                        <th>ID</th>
+                        <th>Order Date</th>
+                        <th>User Name</th>
+                        <th>Seller Name</th>
+                        <th>Oder Products</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in odr %}
+                    {% if i.status == 'New' %}
+                    <tr align="center">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <!-- <td><a href="{% url 'patientapprove' pk=i.id st='Approve'  %}" class="btn btn-warning btn-round">Approve</a></td>
+                        <td><a href="{% url 'patientapprove' pk=i.id st='Reject'  %}" class="btn btn-danger btn-round" onclick="return confirm('Are you really want to Reejct?')">Reject</a></td> -->
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane table-responsive" id="Sconfirm">
+            <table class="table m-b-0 table-hover" id="example" class="display">
+                <thead>
+                    <tr align="center">
+                        <th>ID</th>
+                        <th>Order Date</th>
+                        <th>User Name</th>
+                        <th>Seller Name</th>
+                        <th>Oder Products</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in patientdata %}
+                    {% if i.status == 'Reject' %}
+                    <tr align="center">
+                        <td><span class="list-name">{{i.id}}</span></td>
+                        <td><a href="{% url 'patientsprofile' pk=i.id %}" class="btn btn-info btn-round">{{i.Fname}}</a></td>
+                        <td>{{i.Age}}</td>
+                        <td>{{i.Address}}</td>
+                        <td>{{i.Phone_Number}}</td>
+                        <td>{{i.Symptoms}}</td>
+                        <td><span class="badge badge-danger">{{i.status}}</span></td>
+                        <td><a href="{% url 'patientsdelete' pk=i.id %}" class="btn btn-danger btn-round"
+                            onclick="return confirm('Are you really want to Reejct?')">Delete</a></td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane table-responsive" id="SReject">
+            <table class="table m-b-0 table-hover" id="example" class="display">
+                <thead>
+                    <tr align="center">
+                        <th>ID</th>
+                        <th>Order Date</th>
+                        <th>User Name</th>
+                        <th>Seller Name</th>
+                        <th>Oder Products</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in patientdata %}
+                    {% if i.status == 'Discharge' %}
+                    <tr align="center">
+                        <td><span class="list-name">{{i.id}}</span></td>
+                        <td><a href="{% url 'patientsprofile' pk=i.id %}" class="btn btn-info btn-round">{{i.Fname}}</a></td>
+                        <td>{{i.Age}}</td>
+                        <td>{{i.Address}}</td>
+                        <td>{{i.Phone_Number}}</td>
+                        <td>{{i.Symptoms}}</td>
+                        <td><span class="badge badge-outline">{{i.status}}</span></td>
+                        <td><a href="{% url 'DownloadPdf' pk=i.id %}" class="btn btn-info btn-round">Download invoice</a></td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+        </div>
+    </section>
+    <!-- Scripts -->
+    <script src="{% static 'assets\bundles\libscripts.bundle.js' %}"></script>
+    <script src="{% static 'assets\bundles\vendorscripts.bundle.js' %}"></script>
+
+    <script src="{% static 'assets\bundles\mainscripts.bundle.js' %}"></script>
+    <script src="{% static 'assets\bundles\morrisscripts.bundle.js' %}"></script>
+    <script src="{% static 'assets\bundles\jvectormap.bundle.js' %}"></script>
+    <script src="{% static 'assets\bundles\knob.bundle.js' %}"></script>
+    <script src="{% static 'assets\js\pages\index.js' %}"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>

@@ -98,7 +98,7 @@
 																		<div class="product-action mt-2">
 																			<div class="d-flex gap-2">
 																				<a href="{% url 'showprod' pk=i.id %}" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>View Product</a>
-																				<a href="{% url 'deleteprod' pk=i.id %}" class="btn btn-light btn-ecomm"> <i class="bx bxs-trash"></i>Delete Product</a>
+																				<a href="{% url 'deleteprod' pk=i.id %}" class="btn btn-light btn-ecomm" onclick="return confirm('Are you really want to Delete ?')"> <i class="bx bxs-trash"></i>Delete Product</a>
 																			</div>
 																		</div>
 																	</div>

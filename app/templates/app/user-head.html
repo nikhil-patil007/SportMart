@@ -39,9 +39,9 @@
                             <ul class="navbar-nav social-link ms-lg-2 ms-auto">
                                 
                                 {% if 'uid' in request.session %}
-                                <li class="nav-item"><a href="{% url 'cart' %}" class="nav-link cart-link"><i class='bx bx-shopping-bag'></i></a>
+                                <li class="nav-item"><a href="{% url 'cart' %}" title="Cart" class="nav-link cart-link"><i class='bx bx-shopping-bag'></i></a>
                                 </li>
-                                <li class="nav-item dropdown"> <a class="nav-link cart-link" data-bs-toggle="dropdown"><i class='bx bx-user'></i></a>
+                                <li class="nav-item dropdown"> <a class="nav-link cart-link" title="User" data-bs-toggle="dropdown"><i class='bx bx-user'></i></a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{% url 'Uprofile' %}">Profile</a>
                                         </li>
@@ -57,14 +57,14 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="nav-item"><a href="{% url 'ULogout' %}" class="nav-link cart-link"><i class='bx bx-log-in-circle'></i></a>
+                                <li class="nav-item"><a href="{% url 'ULogout' %}" title="logout" class="nav-link cart-link"><i class='bx bx-log-in-circle'></i></a>
                                 </li>
                                 
                                 {% else %}
                                 
-                                <li class="nav-item"><a href="{% url 'cart' %}" class="nav-link cart-link"><i class='bx bx-shopping-bag'></i></a>
+                                <li class="nav-item"><a href="{% url 'cart' %}" title="cart" class="nav-link cart-link"><i class='bx bx-shopping-bag'></i></a>
                                 </li>
-                                <li class="nav-item dropdown"> <a class="nav-link cart-link" data-bs-toggle="dropdown"><i class='bx bx-user'></i></a>
+                                <li class="nav-item dropdown"> <a class="nav-link cart-link" title="Login | Register" data-bs-toggle="dropdown"><i class='bx bx-user'></i></a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{% url 'Userlogin' %}">Login</a>
                                         </li>

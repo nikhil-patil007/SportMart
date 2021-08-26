@@ -84,7 +84,7 @@
 											<!--end row-->
 											<div class="d-flex gap-2 mt-3">
 												<a href="{% url 'editPro' pk=data.id %}" class="btn btn-light btn-ecomm">	<i class="bx bxs-edit"></i>Update Product</a>
-                                                <a href="{% url 'deleteprod' pk=data.id %}" class="btn btn-light btn-ecomm"> <i class="bx bxs-trash"></i>Delete Product</a>
+                                                <a href="{% url 'deleteprod' pk=data.id %}" class="btn btn-light btn-ecomm" onclick="return confirm('Are you really want to Delete ?')"> <i class="bx bxs-trash"></i>Delete Product</a>
                                             </div>
 											<hr/>
 										</div>
