@@ -92,21 +92,6 @@ def U_showpage(request,pk):
     count=rv.count()
     return render(request, "app/User-View-Product.html",{'data':ProductData,'rev':rv,"count":count})
 
-# Method Functions.
-
-# def orders(request):
-#     if 'uid' in request.session:
-#         getuser = User.objects.get(id=request.session['uid'])
-#         getcart = Cart.objects.filter(User_Id=getuser)
-
-#         ordere = Order.objects.create(
-#             User_Id = getuser,
-#             cart = getcart,
-#         )
-#         return redirect("Checkcompl")
-#     else:
-#         return redirect("index")
-
 
 # Register User
 def U_Register(request):

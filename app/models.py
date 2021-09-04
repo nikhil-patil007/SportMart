@@ -81,8 +81,8 @@ class Cart(models.Model):
    
 # Order Data
 
-class Order(models.Model):
-    Id = models.IntegerField(primary_key=True,default=123456)
+class Orders(models.Model):
+    id = models.IntegerField(primary_key=True,default=100000)
     Order_Date = models.DateField(auto_now_add=True)
     User_Id = models.ForeignKey(User, on_delete=models.CASCADE)
     Seller_Id = models.ForeignKey(seller, on_delete=models.CASCADE)

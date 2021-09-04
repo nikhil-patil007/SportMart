@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'payment',
     'admin_site',
 ]
 
@@ -79,7 +78,7 @@ WSGI_APPLICATION = 'prj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sportmall',
+        'NAME': 'sportmart',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',

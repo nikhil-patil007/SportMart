@@ -7,7 +7,7 @@ def index(request):
         usr = User.objects.all()
         slr = seller.objects.all()
         pro = Product.objects.all()
-        odr = Order.objects.all()
+        odr = Orders.objects.all()
         cat = Category.objects.all()
         rat = Rating.objects.all()
         a = usr.count()
@@ -50,7 +50,7 @@ def A_Category(request):
 
 def A_Order(request):
     if 'aid' in request.session:
-        odr = Order.objects.all()
+        odr = Orders.objects.all()
         return render(request, "admin_site/Order.html",{'odr':odr})
     else:
         return redirect("login")
@@ -115,7 +115,7 @@ def del_Rating(request,pk):
 
 def login(request):
     if 'aid' in request.session:
-        return render(request, "admin_site/index.html")
+        return redirect("Aindex")
     else:
         return render(request, "admin_site/Login.html")
 

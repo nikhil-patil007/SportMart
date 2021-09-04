@@ -39,12 +39,22 @@
    <section class="content home">
         <div class="block-header">
             <div class="col-lg-3 col-md-3 col-sm-12">
-                <h2><img class="navbar-brand" src="{% static 'assets\images\Index-Icons\pro.png' %}" width="50" style="border-radius: 100px;"/>Products Data<small class="text-muted">Welcome to SportMart</small></h2>
+                <h2><img class="navbar-brand" src="{% static 'assets\images\Index-Icons\pro.png' %}" width="50" style="border-radius: 500px;"/>Products Data<small class="text-muted">Welcome to SportMart</small></h2>
             </div>
         </div>
         <br>
         <div class="body container-fluid">
             <!-- Nav tabs -->
+            <ul class="nav nav-tabs padding-0">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#All">All</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#indoor">Indoor Sports Game</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#outdoor">Outdoor Sports Game</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#pc">PC & RPG Game</a>
+                </li>
+            </ul>        
             <!-- Tab panes -->
             <div class="tab-content m-t-10">
                 <div class="tab-pane table-responsive active" id="All">
@@ -66,7 +76,7 @@
                             <tr align="center">
                                 <td><span class="list-name">#{{i.id}}</span></td>
                                 <td>{{i.Seller_ID}}</td>
-                                <td><img src="{{MEDIA_URL}}{{i.Product_Image.url}}" width="50" style="border-radius: 100px;"></td>
+                                <td><img src="{{MEDIA_URL}}{{i.Product_Image.url}}" width="50"></td>
                                 <td><span>{{i.Product_Name}}</span></td>
                                 <td>{{i.Product_Category}}</td>
                                 <td>{{i.Product_Price}}</td>
@@ -77,6 +87,109 @@
                         {% endfor %}
                     </table>
                 </div>
+
+                <div class="tab-pane table-responsive" id="indoor">
+                    <table class="table m-b-0 table-hover" id="example" class="display">
+                        <thead>
+                            <tr align="center">
+                                <th>ID</th>
+                                <th>Seller Name</th>
+                                <th>Product Image</th>
+                                <th>Product Name</th>
+                                <th>Product Category</th>
+                                <th>Product selling Price</th>
+                                <th>Product MRP</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in pro %}
+                            {% if i.Product_Category.pcategory == 'Indoor Sports Games' %}
+                            <tr align="center">
+                                <td><span class="list-name">#{{i.id}}</span></td>
+                                <td>{{i.Seller_ID}}</td>
+                                <td><img src="{{MEDIA_URL}}{{i.Product_Image.url}}" width="50"></td>
+                                <td><span>{{i.Product_Name}}</span></td>
+                                <td>{{i.Product_Category}}</td>
+                                <td>{{i.Product_Price}}</td>
+                                <td>{{i.Product_MRP}}</td>
+                                <td><a href="{% url 'Adelpro' pk=i.id %}" class="btn btn-danger btn-round" onclick="return confirm('Are you really want to Delete?')">Delete</a></td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane table-responsive" id="outdoor">
+                    <table class="table m-b-0 table-hover" id="example" class="display">
+                        <thead>
+                            <tr align="center">
+                                <th>ID</th>
+                                <th>Seller Name</th>
+                                <th>Product Image</th>
+                                <th>Product Name</th>
+                                <th>Product Category</th>
+                                <th>Product selling Price</th>
+                                <th>Product MRP</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in pro %}
+                            {% if i.Product_Category.pcategory == 'Outdoor Sports Games' %}
+                            <tr align="center">
+                                <td><span class="list-name">#{{i.id}}</span></td>
+                                <td>{{i.Seller_ID}}</td>
+                                <td><img src="{{MEDIA_URL}}{{i.Product_Image.url}}" width="50"></td>
+                                <td><span>{{i.Product_Name}}</span></td>
+                                <td>{{i.Product_Category}}</td>
+                                <td>{{i.Product_Price}}</td>
+                                <td>{{i.Product_MRP}}</td>
+                                <td><a href="{% url 'Adelpro' pk=i.id %}" class="btn btn-danger btn-round" onclick="return confirm('Are you really want to Delete?')">Delete</a></td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane table-responsive" id="pc">
+                    <table class="table m-b-0 table-hover" id="example" class="display">
+                        <thead>
+                            <tr align="center">
+                                <th>ID</th>
+                                <th>Seller Name</th>
+                                <th>Product Image</th>
+                                <th>Product Name</th>
+                                <th>Product Category</th>
+                                <th>Product selling Price</th>
+                                <th>Product MRP</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in pro %}
+                            {% if i.Product_Category.pcategory == 'PC & RPG Games' %}
+                            <tr align="center">
+                                <td><span class="list-name">#{{i.id}}</span></td>
+                                <td>{{i.Seller_ID}}</td>
+                                <td><img src="{{MEDIA_URL}}{{i.Product_Image.url}}" width="50"></td>
+                                <td><span>{{i.Product_Name}}</span></td>
+                                <td>{{i.Product_Category}}</td>
+                                <td>{{i.Product_Price}}</td>
+                                <td>{{i.Product_MRP}}</td>
+                                <td><a href="{% url 'Adelpro' pk=i.id %}" class="btn btn-danger btn-round" onclick="return confirm('Are you really want to Delete?')">Delete</a></td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </section>
