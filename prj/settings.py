@@ -77,16 +77,14 @@ WSGI_APPLICATION = 'prj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'sportmart',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+        'USER': 'postgres',
+        'PASSWORD' : '@@Nikhil007',
+        'HOST' : 'localhost',
+        'PORT': '5432',
+    },
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

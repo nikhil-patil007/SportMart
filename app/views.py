@@ -493,12 +493,21 @@ def S_Loginuser(request):
         pwd = request.POST['password']
 
         user = seller.objects.filter(email=em)
+        usr = seller.objects.filter(username=em)
         if len(user) > 0:
             if user[0].password == pwd:
                 request.session['id']= user[0].id
                 request.session['Sname']= user[0].Sname
                 request.session['email']= user[0].email
-
+                return redirect("indexpage")
+            else:
+                msg = "Password is Incorrect..!"
+                return render(request, "app/S-Login.html",{'err':msg})
+        elif len(usr) > 0:
+            if usr[0].password == pwd:
+                request.session['id']= usr[0].id
+                request.session['Sname']= usr[0].Sname
+                request.session['email']= usr[0].email
                 return redirect("indexpage")
             else:
                 msg = "Password is Incorrect..!"
@@ -507,7 +516,7 @@ def S_Loginuser(request):
             msg = "Seller Doesn't Found"
             return render(request, "app/S-Login.html",{'err':msg})
     except:
-        msg = "Sever Slow Please Try Again...."
+        msg = "Something Wrong Please Try Again...."
         return render(request, "app/S-Login.html",{'err':msg})
 
 # Email Send

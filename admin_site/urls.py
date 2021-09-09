@@ -16,10 +16,10 @@ urlpatterns = [
     path('Admin-LogOut/',views.A_logout,name='logout'),
     path('Admin-Add-Category/',views.A_A_Category,name='addcat'),
 
-    path('Admin-User-Delete/<int:pk> /',views.del_User,name='Adelusr'),
-    path('Admin-Seller-Delete/<int:pk> /',views.del_Seller,name='Adelsel'),
-    path('Admin-Product-Delete/<int:pk> /',views.del_Product,name='Adelpro'),
-    path('Admin-Category-Delete/<int:pk> /',views.del_Category,name='Adelcat'),
-    path('Admin-Rating-Delete/<int:pk> /',views.del_Rating,name='Adelrat'),
+    path('Admin-User-Delete/<int:pk>/',views.del_User,name='Adelusr'),
+    path('Admin-Seller-Delete/<int:pk>/',views.del_Seller,name='Adelsel'),
+    path('Admin-Product-Delete/<int:pk>/',views.del_Product,name='Adelpro'),
+    path('Admin-Category-Delete/<int:pk>/',views.del_Category,name='Adelcat'),
+    path('Admin-Rating-Delete/<int:pk>/',views.del_Rating,name='Adelrat'),
 
 ]
