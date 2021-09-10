@@ -180,7 +180,7 @@ def U_Send_OTP(request):
             message = f'Hi {em},\nThank you for Contact to SPORTMART. \n\nYour OTP is {otp}. \n\nContinue & Enjoy To Shopping'
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [em, ]
-            # send_mail( subject, message, email_from, recipient_list )
+            send_mail( subject, message, email_from, recipient_list )
             return render(request, "app/user-Enter OTP.html",{'em':em,})
         else:
             msg = "Email is Incorrect..!"
@@ -537,7 +537,7 @@ def S_Send_OTP(request):
                 message = f'Hi {em},\nThank you for Contact to SPORTMART. \nYour OTP is {otp}.'
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list = [em, ]
-                # send_mail( subject, message, email_from, recipient_list )
+                send_mail( subject, message, email_from, recipient_list )
                 return render(request, "app/S-Enter OTP.html",{'em':em,})
             else:
                 msg = "Email is Incorrect..!"
