@@ -277,19 +277,25 @@ def U_Logout(request):
         return redirect("index")
 
 # Add To Cart Process
-def Add_To_Cart(request,pk):
-    if 'uid' in request.session:
-        ProductData = Product.objects.get(id=pk)
-        getuser = User.objects.get(id=request.session['uid'])
+# def Add_To_Cart(request,pk):
+#     if 'uid' in request.session:
+#         ProductData = Product.objects.get(id=pk)
+#         getuser = User.objects.get(id=request.session['uid'])
 
-        cart = Cart.objects.create(
-            getprod = ProductData,
-            User_Id = getuser,
-            Total = ProductData.Product_Price,
-        )
-        return redirect('index')
+#         cart = Cart.objects.create(
+#             getprod = ProductData,
+#             User_Id = getuser,
+#             Total = ProductData.Product_Price,
+#         )
+#         return redirect('index')
+#     else:
+#         return redirect('Userlogin')
+
+def Add_To_Cart(request):
+    if 'cartdata' in request.session:
+        pass
     else:
-        return redirect('Userlogin')
+        pass
 
 # Item Remove To Cart
 def one_remove(request,pk):

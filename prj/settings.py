@@ -75,15 +75,25 @@ WSGI_APPLICATION = 'prj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'sportmart',
+#         'USER': 'postgres',
+#         'PASSWORD' : '@@Nikhil007',
+#         'HOST' : 'localhost',
+#         'PORT': '5432',
+#     },
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sportmart',
-        'USER': 'postgres',
-        'PASSWORD' : '@@Nikhil007',
-        'HOST' : 'localhost',
-        'PORT': '5432',
-    },
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 }
 
 # Password validation

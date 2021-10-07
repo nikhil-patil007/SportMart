@@ -21,6 +21,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{% static 'css/app.css'  %}" rel="stylesheet">
 	<link href="{% static 'css/icons.css'  %}" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
 	<title>SportMart | User-Show Product</title>
 </head>
 
@@ -82,8 +85,11 @@
 												<dt class="col-sm-3">Delivery</dt><dd class="col-sm-9">Door to Door</dd>
 											</dl>
 											<!--end row-->
-											<div class="d-flex gap-2 mt-3">
-												<a href="{% url 'Add_To_Cart' pk=data.id %}" class="btn btn-light btn-ecomm">	<i class="bx bxs-cart-alt"></i>Add to Cart</a> 
+											<div class="d-md-flex gap-2 mt-3">
+												<input type="hidden" class="product-name" value="{{i.Product_Name}}">
+												<input type="hidden" class="product-price" value="{{i.Product_Price}}">		
+												<input type="hidden" class="product-qty" value="{{i.Product_Quantity}}">
+												<a class="btn btn-light btn-ecomm" id='addtocart'>	<i class="bx bxs-cart-alt"></i>Add to Cart</a> 
 												<a href="{% url 'index' %}" class="btn btn-light btn-ecomm"><i class="bx bx-shopping-bag"></i>Show Other Product </a>
 											</div>
 											<hr/>
@@ -231,17 +237,17 @@
 	</div>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
-		<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-		<!--plugins-->
-		<script src="{% static 'js/jquery.min.js' %}"></script>
-		<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
-		<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
-		<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
-		<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
-		<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
-		<!--app JS-->
-		<script src="{% static 'js/app.js' %}"></script>
-		<script src="{% static 'js/index.js' %}"></script>	
 </body>
-
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<!--plugins-->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
+	<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
+	<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+	<!--app JS-->
+	<script src="{% static 'js/app.js' %}"></script>
+	<script src="{% static 'js/index.js' %}"></script>	
+	{% include 'app/ajaxfile.html' %}
 </html>

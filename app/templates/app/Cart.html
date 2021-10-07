@@ -73,7 +73,7 @@
 													</div>
 													<div class="col-lg-3">
 														<div class="cart-action text-center">
-															<h5 class="mb-2">₹{{i.Total}}</h5>
+															<h5 class="mb-2">₹{% widthratio i.getprod.Product_Price 1 i.Quantity %}</h5>
 														</div>
 													</div>
 													<div class="col-lg-1">
@@ -89,7 +89,7 @@
 												{% endfor %}
                                                 <div class="d-lg-flex align-items-center gap-2">	
 													<a href="{% url 'index' %}" class="btn btn-light btn-ecomm"><i class='bx bx-shopping-bag'></i> Continue Shopping</a>
-                                                    <a href="{% url 'removeCart' %}" class="btn btn-light btn-ecomm ms-auto" onclick="return confirm('Are you really want to Remove ?')"><i class='bx bx-x-circle'></i> Clear Cart</a>
+                                                    <a href="" class="btn btn-light btn-ecomm ms-auto" onclick="return confirm('Are you really want to Remove ?')"><i class='bx bx-x-circle'></i> Clear Cart</a>
 													<a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-refresh"></i> Update Cart</a>
                                                 </div>
 											</div>
@@ -121,7 +121,7 @@
 												<div class="my-3 border-top"></div>
 												<h5 class="mb-0">Order Total: <span class="float-end">{{tt}}</span></h5>
 												<div class="my-4"></div>
-												<div class="d-grid"> <a href="" class="btn btn-white btn-ecomm" onclick="return confirm('Are you Order Now ?')">Proceed to Checkout</a>
+												<div class="d-grid"> <a href="{% url 'Checkcompl' %}" class="btn btn-white btn-ecomm" onclick="return confirm('Are you Order Now ?')">Proceed to Checkout</a>
 												</div>
 											</div>
 										</div>

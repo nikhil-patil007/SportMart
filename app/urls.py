@@ -31,9 +31,9 @@ urlpatterns = [
 
 # User Site With Primary Key
     path("User-Show-Product/<int:pk>/",views.U_showpage,name='ushowprd'),
-    path('User-Add-Cart/<int:pk>/',views.Add_To_Cart,name='Add_To_Cart'),
+    # path('User-Add-Cart/<int:pk>/',views.Add_To_Cart,name='Add_To_Cart'),
     path('User-Item-Remove/<int:pk>/',views.one_remove,name='removeitem'),
-    path('User-Cart-Remove/<int:pk>/',views.Cart_remove,name='removeCart'),
+    path('User-Cart-Remove/',views.Cart_remove,name='removeCart'),
     
 # Seller Site Paths
 # Seller site page path

@@ -21,6 +21,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{% static 'css/app.css'  %}" rel="stylesheet">
 	<link href="{% static 'css/icons.css'  %}" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
 	<title>SportMart | Home</title>
 </head>
 
@@ -34,8 +37,11 @@
 		<div style="background-color: oldlace;">
 			<div class="alert alert-dismissible fade show shadow-none rounded-0 mb-0 border-bottom">
 				<div class="d-lg-flex align-items-center gap-2 justify-content-center">
-					<p style="color: black;">Get Up to <strong>40% OFF</strong> New Sell Is Come</p>
-					<p style="color: brown;">*Limited time only</p><br>
+					<strong style="color: black;">
+						Wear mask, Stay Safe & Wash Your Hand 
+					</strong>
+					<!-- <p style="color: black;">Get Up to <strong>40% OFF</strong> New Sell Is Come</p>
+					<p style="color: brown;">*Limited time only</p><br> -->
 				</div>
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
@@ -161,12 +167,15 @@
 																			<p class="product-catergory font-13 mb-1">{{i.Product_Category}}</p>
 																		</a>
 																		<a href="javascript:;">
-																			<h6 class="product-name mb-2">{{i.Product_Name}}	</h6>
+																			<h6 class="product-name">{{i.Product_Name}}</h6>
+																			<input type="hidden" class="product-name" value="{{i.Product_Name}}">
 																		</a>
-																		<p class="card-text">{{i.Product_Title}}</p>
+																		<p class="product-title">{{i.Product_Title}}</p>
+																		<input type="hidden" class="product-title" value="{{i.Product_Title}}">
 																		<div class="d-flex align-items-center">
-																			<div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">₹ {{i.Product_MRP}}</span>
-																				<span class="text-white fs-5">₹ {{i.Product_Price}}</span>
+																			<div class="product-mrp"> <span class="me-1 text-decoration-line-through">₹ {{i.Product_MRP}}</span>
+																				<span class="text-white fs-5 product-price">₹ {{i.Product_Price}}</span>
+																				<input type="hidden" class="product-price" value="{{i.Product_Price}}">																				
 																			</div>
 																			<div class="cursor-pointer ms-auto">
 																				<i class="bx bxs-star text-warning"></i>
@@ -178,7 +187,7 @@
 																		</div>
 																		<div class="product-action mt-2">
 																			<div class="d-flex gap-2"><a href="{% url 'ushowprd' pk=i.id %}" title="View Product" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>View Product</a>
-																				<a href="{% url 'Add_To_Cart' pk=i.id %}" title="Add To Cart" class="btn btn-light btn-ecomm"> <i class="bx bx-cart"></i>Add To Cart</a>
+																				<a href="" title="Add To Cart" class="btn btn-light btn-ecomm"> <i class="bx bx-cart"></i>Add To Cart</a>
 																			</div>
 																		</div>
 																	</div>
@@ -278,18 +287,17 @@
 		<!--End Back To Top Button-->
 	</div>
 	<!--end wrapper-->
-	<!-- Bootstrap JS -->
-		<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-		<!--plugins-->
-		<script src="{% static 'js/jquery.min.js' %}"></script>
-		<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
-		<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
-		<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
-		<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
-		<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
-		<!--app JS-->
-		<script src="{% static 'js/app.js' %}"></script>
-		<script src="{% static 'js/index.js' %}"></script>	
 </body>
-
+	<!-- Bootstrap JS -->
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<!--plugins-->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'plugins/simplebar/js/simplebar.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
+	<script src="{% static 'plugins/metismenu/js/metisMenu.min.js' %}"></script>
+	<script src="{% static 'plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+	<!--app JS-->
+	<script src="{% static 'js/app.js' %}"></script>
+	<script src="{% static 'js/index.js' %}"></script>
 </html>
