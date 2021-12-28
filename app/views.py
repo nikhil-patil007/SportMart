@@ -146,7 +146,7 @@ def U_login(request):
                 return redirect("index")
             else:
                 msg = "Password is Incorrect..!"
-                return render(request, "app/user-login.html",{'err':msg})
+                return render(request, "app/user-login.html",{'err':msg,'em':Em})
         elif len(us) > 0:
             if us[0].Upassword == Pwd:
                 request.session['uid']= us[0].id
@@ -155,13 +155,13 @@ def U_login(request):
                 return redirect("index")
             else:
                 msg = "Password is Incorrect..!"
-                return render(request, "app/user-login.html",{'err':msg})
+                return render(request, "app/user-login.html",{'err':msg,'em':Em})
         else:
             msg = "User Doesn't Found"
-            return render(request, "app/user-login.html",{'err':msg})
+            return render(request, "app/user-login.html",{'err':msg,'em':Em})
     except:
         msg = "User Doesn't Found"
-        return render(request, "app/user-login.html",{'err':msg})
+        return render(request, "app/user-login.html",{'err':msg,'em':Em})
 
 # User Email sending
 def U_Send_OTP(request):
@@ -265,6 +265,33 @@ def U_Update(request):
             return render(request, "app/user-Profile.html",{'err': msg,'user': updusr})
     else:
         return redirect("Userlogin")
+    
+# Search Product
+def U_SearchProduct(request):
+    pro = request.GET['sprod']
+    cat = request.GET['scat']
+    print(f"IN SEARCH PRODUCT------->{pro,cat}")
+    if pro == '' and cat == "All Categories":
+        print("IN IF")
+        getpro = Product.objects.all()
+        for i in getpro:
+            print("SEARCHED PRODUCT------->",i.pname,i.id)
+        return render(request, "app/shop-grid-filter-on-top.html",{'pro':pro,'prod':getpro,'cat':GetCategories()})
+        
+    if pro and cat == "All Categories":
+        print("IN PRO-CAT-ALL IF")
+        getpro = Product.objects.all().filter(pname__startswith=pro)
+        for i in getpro:
+            print("SEARCHED PRODUCT------->",i.pname,i.id)
+        return render(request, "app/shop-grid-filter-on-top.html",{'pro':pro,'prod':getpro,'cat':GetCategories()})
+
+    if pro and cat:
+        print("IN PRO-CAT IF")
+        getcat = Category.objects.get(pcategory=cat)
+        getpro = Product.objects.all().filter(pname__startswith=pro,cat=getcat)
+        for i in getpro:
+            print("SEARCHED PRODUCT------->",i.pname,i.id)
+        return render(request, "app/shop-grid-filter-on-top.html",{'pro':pro,'prod':getpro,'cat': GetCategories()})
 
 # User Logout
 def U_Logout(request):
@@ -495,7 +522,7 @@ def S_Registeruser(request):
 # Login Seller
 def S_Loginuser(request):
     try:
-        em = request.POST['email']
+        em = request.POST['email'].casefold()
         pwd = request.POST['password']
 
         user = seller.objects.filter(email=em)
@@ -508,7 +535,7 @@ def S_Loginuser(request):
                 return redirect("indexpage")
             else:
                 msg = "Password is Incorrect..!"
-                return render(request, "app/S-Login.html",{'err':msg})
+                return render(request, "app/S-Login.html",{'err':msg,'em':em})
         elif len(usr) > 0:
             if usr[0].password == pwd:
                 request.session['id']= usr[0].id
@@ -517,13 +544,13 @@ def S_Loginuser(request):
                 return redirect("indexpage")
             else:
                 msg = "Password is Incorrect..!"
-                return render(request, "app/S-Login.html",{'err':msg})
+                return render(request, "app/S-Login.html",{'err':msg,'em':em})
         else:
             msg = "Seller Doesn't Found"
-            return render(request, "app/S-Login.html",{'err':msg})
+            return render(request, "app/S-Login.html",{'err':msg,'em':em})
     except:
         msg = "Something Wrong Please Try Again...."
-        return render(request, "app/S-Login.html",{'err':msg})
+        return render(request, "app/S-Login.html",{'err':msg,'em':em})
 
 # Email Send
 def S_Send_OTP(request):
@@ -653,14 +680,17 @@ def S_Changpasswrd(request):
         return redirect("loginpage")
 
 # Delete Product
-def Deletepage(request,pk):
+def Deletepage(request):
     try:
-        if 'id' in request.session:
-            ProductData = Product.objects.get(id=pk)
-            ProductData.delete()
-            return redirect("allProductpage")
+        if request.method=='POST':
+            id = request.POST.get('pid')
+            print(id)
+            getpas = Product.objects.get(pk=id)
+            getpas.delete()
+            return JsonResponse({'status':1})
+            # return redirect("Home")
         else:
-            return redirect("loginpage")
+            return JsonResponse({'status':0})
     except:
         return redirect("allProductpage")
 

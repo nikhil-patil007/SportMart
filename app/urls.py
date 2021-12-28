@@ -28,6 +28,7 @@ urlpatterns = [
     path('User-Logout/',views.U_Logout,name="ULogout"),
     path('User-Update/',views.U_Update,name='usrupdate'),
     path('User-Update-Cart/',views.qty,name='cartupdate'),
+    path("search-prod/",views.U_SearchProduct,name="searchprod"),
 
 # User Site With Primary Key
     path("User-Show-Product/<int:pk>/",views.U_showpage,name='ushowprd'),
@@ -62,7 +63,7 @@ urlpatterns = [
     path('seller-Update/',views.S_Update,name='slrupdate'),
 
 # Seller Site With Primary key 
-    path("Seller-Delete-Product/<int:pk>/",views.Deletepage,name="deleteprod"),
+    path("Seller-Delete-Product/",views.Deletepage,name="deleteprod"),
     path("Seller-Edit-Product/<int:pk>/",views.S_Pro_Edit_page,name='editPro'),
     path("Seller-View-Product/<int:pk>/",views.S_View_Product_Page,name="showprod"),
     path("Seller-Upload-Image/<int:pk>/",views.Uploadimage,name="upload"),

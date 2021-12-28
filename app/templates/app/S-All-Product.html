@@ -63,6 +63,7 @@
 										</div>
 									</div>
 									<!--start product show area-->
+									<div class="cin">
 									{% for i in data %} 
 									<div class="product-wrapper">
 										<div class="row">
@@ -98,7 +99,7 @@
 																		<div class="product-action mt-2">
 																			<div class="d-flex gap-2">
 																				<a href="{% url 'showprod' pk=i.id %}" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>View Product</a>
-																				<a href="{% url 'deleteprod' pk=i.id %}" class="btn btn-light btn-ecomm" onclick="return confirm('Are you really want to Delete ?')"> <i class="bx bxs-trash"></i>Delete Product</a>
+																				<a href="javascript:void(0)" class="btn btn-light btn-ecomm S-delete-pro" onclick="return confirm('Are you really want to Delete ?')" data-sid="{{i.id}}"> <i class="bx bxs-trash"></i>Delete Product</a>
 																			</div>
 																		</div>
 																	</div>
@@ -112,6 +113,7 @@
 													
 										</div>
 										<!--end-->
+									</div>
 									</div>
 									{% endfor %}
 									<!--end product show area-->
@@ -154,10 +156,13 @@
 {% include 'app/S-foot.html' %}
 
 <!--end footer section-->
-		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--Start Back To Top Button--> <a href="javaScript:void(0)" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
 		<!--End Back To Top Button-->
 
 	<!--end wrapper-->
+	<script type="text/javascript">
+		{% include "app/ajaxfile.js" %}
+	</script>
 	<!-- Bootstrap JS -->
 	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 	<!--plugins-->

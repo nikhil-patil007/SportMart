@@ -59,12 +59,12 @@
                                                         {% endif %}  
 														<div class="col-12">
 															<label for="inputEmailAddress" class="form-label">Email Or UserName<span style="color: red">*</span></label>
-															<input type="text" class="form-control" name="email" placeholder="Email Address" required>
+															<input type="text" class="form-control" name="email" placeholder="Email Address" value="{{em}}" required>
 														</div>
 														<div class="col-12">
 															<label for="inputChoosePassword" class="form-label">Password<span style="color: red">*</span></label>
 															<div class="input-group" id="show_hide_password">
-																<input type="password" class="form-control border-end-0" name="password" value="12345678" placeholder="Enter Password" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+																<input type="password" class="form-control border-end-0" name="password" placeholder="Enter Password" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
 															</div>
 														</div>
 														<div class="col-md-6">	<a href="{% url 'forgotpassword' %}"  style="color:rgba(255, 94, 0, 0.973);">Forgot Password ?</a>

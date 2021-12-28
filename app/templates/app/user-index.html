@@ -187,7 +187,8 @@
 																		</div>
 																		<div class="product-action mt-2">
 																			<div class="d-flex gap-2"><a href="{% url 'ushowprd' pk=i.id %}" title="View Product" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>View Product</a>
-																				<a href="" title="Add To Cart" class="btn btn-light btn-ecomm"> <i class="bx bx-cart"></i>Add To Cart</a>
+																				<!-- <a href="" title="Add To Cart" class="btn btn-light btn-ecomm"> <i class="bx bx-cart"></i>Add To Cart</a> -->
+																				<button title="Add To Cart" class="btn btn-light btn-ecomm" id="addtocart"><i class="bx bx-cart"></i>Add To Cart</button>
 																			</div>
 																		</div>
 																	</div>
@@ -300,4 +301,13 @@
 	<!--app JS-->
 	<script src="{% static 'js/app.js' %}"></script>
 	<script src="{% static 'js/index.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			// Add To Cart
+			$("#addtocart").on('click',function(){
+				var_qty
+			});
+			// End Cart
+		});
+	</script>
 </html>

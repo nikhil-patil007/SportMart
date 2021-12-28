@@ -29,8 +29,21 @@
                 </div>
                 <div class="col-sm-6 col-md order-4 order-md-2">
                     <div class="input-group flex-nowrap px-xl-4">
-                        <input type="search" class="form-control w-100" placeholder="Search for Products">
-                        <!-- <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span> -->
+                        
+                            {% if pro %}
+                            <input type="search" class="form-control w-100" name="sprod" value="{{pro}}">
+                            {% else %}
+                            <input type="search" class="form-control w-100" name="sprod" placeholder="Search for Products">
+                            {% endif %}
+                            <select class="form-select flex-shrin k-0" name="scat" aria-label="Default select example"
+                                            style="width: 10.5rem;">
+                                            <option selected>All Categories</option>
+                                            {% for i in cat %}
+                                            <option>{{i.category_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                            <button class="input-group-text cursor-pointer"><i class='bx bx-search'></i></button>
+                        
                     </div>
                 </div>
                 <div class="col col-md-auto order-2 order-md-4">
